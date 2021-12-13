@@ -1,11 +1,20 @@
 #ifndef __ZETA__
 #define __ZETA__
+#include <cmath>
 typedef struct complex{
     double re;
     double im;
 }complex;
 class Zeta{
     public:
+        Zeta(){
+            temp.im=0;
+            temp.re=0;
+            temp2.im=0;
+            temp.re=0;
+            zeta_output.re=0;
+            zeta_output.im=0;
+        }
         Zeta(complex input){
             zeta_input=input;
             temp.im=0;
@@ -36,9 +45,10 @@ class Zeta{
         complex temp;
         complex temp2;
         complex zeta_output;
+        int n=5000; //5000 terminos
         void make_zeta(){
-            temp=factor(test);
-            temp2=eta_sum(test);
+            temp=factor(zeta_input);
+            temp2=eta_sum(zeta_input);
             zeta_output.im= temp.re*temp2.re-temp.im*temp2.im;
             zeta_output.re= temp.re*temp2.im+temp.im*temp2.re;
             return;
@@ -52,7 +62,6 @@ class Zeta{
             double den2=sin(input.im*log(2.0));
             den2*=den2;
             den2*=pow(2.0,2.0-2.0*input.re);
-
             out.re=(1.0-pow(2.0,1.0-input.re)*cos(input.im*log(2.0)))/(den+den2);
             out.im=-(pow(2.0,1.0-input.re)*sin(input.im*log(2.0)))/(den+den2);
             return out;
@@ -63,7 +72,7 @@ class Zeta{
         complex eta_sum(complex input){
             double temp=0.0;
             double temp2=0.0;
-            uno_t=1.0;
+            double uno_t=1.0;
             double theta;
             double bottom;
             for (size_t i=1; i<=n; i++){
