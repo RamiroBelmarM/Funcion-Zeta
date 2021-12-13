@@ -24,6 +24,12 @@ class Zeta{
             zeta_output.re=0;
             zeta_output.im=0;
         }
+        void set_n(int n_term){
+            if (n_term<1000)
+                n_term=1000;
+            n=n_term;
+            return;
+        }
         void init(complex input){
             zeta_input=input;
             temp.im=0;
