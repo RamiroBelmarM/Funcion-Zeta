@@ -35,3 +35,7 @@ int main(){
     return 0;
 }
 ```
+
+# Referencia
+
+Borwein, J. M., Bradley, D. M., & Crandall, R. E. (2000). Computational strategies for the Riemann zeta function. Journal of Computational and Applied Mathematics, 121(1-2), 247-296.
